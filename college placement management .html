@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Placement Management System</title>
+    <style>
+        body { font-family: Arial; background: #eef2f7; text-align: center; }
+        h1 { background: navy; color: white; padding: 20px; }
+        .box { background: white; padding: 20px; margin: 20px; }
+        input, button { padding: 10px; margin: 5px; }
+        button { background: navy; color: white; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h1>College Placement Management System</h1>
+
+<div class="box">
+    <h2>Student Registration</h2>
+    <input id="name" placeholder="Student Name">
+    <input id="roll" placeholder="Roll Number">
+    <input id="company" placeholder="Company Name">
+    <button onclick="addStudent()">Submit</button>
+</div>
+
+<div class="box">
+    <h2>Placement Details</h2>
+    <table border="1" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody id="data"></tbody>
+    </table>
+</div>
+
+<div class="box">
+    <h2>Project Team</h2>
+    <p>Team Member 1 | Team Member 2</p>
+    <p>Team Member 3 | Team Member 4</p>
+</div>
+
+<script>
+function addStudent() {
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+    let company = document.getElementById("company").value;
+
+    if (!name || !roll || !company) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let row = document.createElement("tr");
+
+    [name, roll, company].forEach(value => {
+        let cell = document.createElement("td");
+        cell.textContent = value;
+        row.appendChild(cell);
+    });
+
+    document.getElementById("data").appendChild(row);
+
+    document.getElementById("name").value = "";
+    document.getElementById("roll").value = "";
+    document.getElementById("company").value = "";
+}
+</script>
+
+</body>
+</html>
